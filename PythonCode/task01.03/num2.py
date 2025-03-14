@@ -7,3 +7,9 @@
 """
 
 
+dt = {}
+
+while True:
+    a, b = input().split()
+    dt[a] = b
+    print(sorted(dt.items()))
