@@ -14,9 +14,22 @@ from abc import ABC, abstractmethod
 
 
 class Animal(ABC):
+    """
+    Abstract class with abstract method, all animals have sound
+    """
     @abstractmethod
     def sound(self):
+        """
+        What sound makes animal
+        """
         pass
+    def do_you_real(self):
+        """Give the answewr to question "do you real?"
+
+        Returns:
+            str: yes
+        """
+        return "Yes"
 
 
 class Monkey(Animal):
@@ -26,35 +39,74 @@ class Monkey(Animal):
     POPULATION_MONKEY = 0
 
     def sound(self):
+        """
+        Give what sound makes the animal
+        Returns:
+            String: animal sound
+        """
         return "O-a-o-a..."
-    
-    def __init__(self, height, weight):
+    def how_much_polulation(self):
+        """Give the population of monkey
+
+        Returns:
+            int: count of monkey
+        """
+        return self.POPULATION_MONKEY
+    def what_eat(self):
+        """
+        Give favorite eat
+        Returns:
+            str: favorite eat
+        """
+        return self.must_have_eat
+    def __init__(self, height, weight, eat = "banana"):
         if height <= 0 or weight <= 0:
             raise AttributeError("Height and weight must be more then zero.")
         Monkey.POPULATION_MONKEY += 1
         self.height = height
         self.weight = weight
+        self.must_have_eat = eat
 
 
 class Human(Monkey):
     """
-    Models a human today
+    Model a human today
+
+    Attributes:
+        height: float
+        width: float
+        gender: str
+    Class atributes:
+        POPULATION_HUMAN: int
     """
     POPULATION_HUMAN = 0
 
-    def __init__(self, height, width, gender):
+    def __init__(self, height, width, gender, is_smart):
         super().__init__(height, width)
         self.gender = gender
+        self.is_smart = is_smart
         Human.POPULATION_HUMAN += 1
-        
-    def ICQ(self):
-        if self.gender == "male":
-            return 135
-        elif self.gender == "female":
+
+    def icq(self):
+        """
+        Give the ICQ
+
+        Returns:
+            int: result of icq
+        """
+        if self.gender == "male": # ?
+            return 120
+        if self.gender == "female":
             return 50
-        else:
-            return 0
-        
+        return 0
+    def do_you_smart(self):
+        """Give the answer "is he smart?"
+
+        Returns:
+            bool: yes - is smart, no - is not smart
+        """
+        return self.is_smart
+
 
 class EvolutionalHuman(Human):
     """
@@ -70,6 +122,11 @@ class EvolutionalHuman(Human):
         EvolutionalHuman.POPULATION_EHUMAN += 1
 
     def create_thing(self, thing_name):
+        """Add thing to list
+
+        Args:
+            thing_name (str): name of thing
+        """
         EvolutionalHuman.things.append(thing_name)
 
 

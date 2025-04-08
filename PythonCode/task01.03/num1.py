@@ -18,6 +18,6 @@ RES = None
 for key, value in answ.items():
     if value > CNT:
         RES = key
-        cnt = value
+        CNT = value
 
 print(RES)
